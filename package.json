@@ -4,7 +4,7 @@
   "description": "Vigie — application de veille technologique",
   "main": "./out/main/index.js",
   "author": {
-    "name": "Mickael Monestier",
+    "name": "Cyberlogic",
     "email": "mickaelmonestier@gmail.com"
   },
   "license": "SEE LICENSE IN LICENSE",
@@ -48,7 +48,7 @@
   "build": {
     "appId": "com.vigie.app",
     "productName": "Vigie",
-    "copyright": "Copyright © 2026 Mickael Monestier",
+    "copyright": "Copyright © 2026 Cyberlogic",
     "directories": {
       "output": "release",
       "buildResources": "build"
@@ -71,7 +71,7 @@
       ],
       "icon": "build/icon.ico",
       "signtoolOptions": {
-        "publisherName": "Mickael Monestier"
+        "publisherName": "Cyberlogic"
       }
     },
     "nsis": {

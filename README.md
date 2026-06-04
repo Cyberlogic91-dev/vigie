@@ -106,6 +106,6 @@ src/
 
 ## Licence
 
-**Logiciel propriétaire — Tous droits réservés.** © 2026 Mickael Monestier.
+**Logiciel propriétaire — Tous droits réservés.** © 2026 Cyberlogic.
 Toute redistribution, publication, revente ou modification est interdite sans
 autorisation écrite. Voir le fichier [LICENSE](LICENSE) pour les conditions complètes.
