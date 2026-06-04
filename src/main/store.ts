@@ -25,6 +25,10 @@ export const RECOMMENDED_SOURCES: RecommendedSource[] = [
   { type: 'rss', name: "Tom's Hardware FR", url: 'https://www.tomshardware.fr/feed/', category: 'Tech', lang: 'fr' },
   { type: 'rss', name: 'Phonandroid', url: 'https://www.phonandroid.com/feed', category: 'Mobile', lang: 'fr' },
   { type: 'rss', name: 'Siècle Digital', url: 'https://siecledigital.fr/feed/', category: 'Tech', lang: 'fr' },
+  { type: 'rss', name: 'Gamekult', url: 'https://www.gamekult.com/feed.xml', category: 'Jeux vidéo', lang: 'fr' },
+  { type: 'rss', name: 'Jeuxvideo.com', url: 'https://www.jeuxvideo.com/rss/rss.xml', category: 'Jeux vidéo', lang: 'fr' },
+  { type: 'rss', name: 'Futura Sciences', url: 'https://www.futura-sciences.com/rss/actualites.xml', category: 'Science', lang: 'fr' },
+  { type: 'rss', name: 'Sciences et Avenir', url: 'https://www.sciencesetavenir.fr/rss.xml', category: 'Science', lang: 'fr' },
   { type: 'reddit', name: 'r/france (tech)', url: 'https://www.reddit.com/r/france/.rss', category: 'Général', lang: 'fr' },
   // Anglais
   { type: 'hackernews', name: 'Hacker News (front page)', url: '', category: 'Général', lang: 'en' },
@@ -58,6 +62,29 @@ export const RECOMMENDED_SOURCES: RecommendedSource[] = [
   // IA (anglais)
   { type: 'rss', name: 'Hugging Face', url: 'https://huggingface.co/blog/feed.xml', category: 'IA', lang: 'en' },
   { type: 'reddit', name: 'r/MachineLearning', url: 'https://www.reddit.com/r/MachineLearning/.rss', category: 'IA', lang: 'en' },
+  // Cloud / DevOps (anglais)
+  { type: 'rss', name: 'AWS Blog', url: 'https://aws.amazon.com/blogs/aws/feed/', category: 'Cloud', lang: 'en' },
+  { type: 'rss', name: 'Kubernetes Blog', url: 'https://kubernetes.io/feed.xml', category: 'Cloud', lang: 'en' },
+  { type: 'rss', name: 'Docker Blog', url: 'https://www.docker.com/blog/feed/', category: 'Cloud', lang: 'en' },
+  { type: 'rss', name: 'The New Stack', url: 'https://thenewstack.io/feed/', category: 'Cloud', lang: 'en' },
+  { type: 'rss', name: 'DevOps.com', url: 'https://devops.com/feed/', category: 'Cloud', lang: 'en' },
+  { type: 'reddit', name: 'r/devops', url: 'https://www.reddit.com/r/devops/.rss', category: 'Cloud', lang: 'en' },
+  { type: 'reddit', name: 'r/kubernetes', url: 'https://www.reddit.com/r/kubernetes/.rss', category: 'Cloud', lang: 'en' },
+  // Hardware (anglais)
+  { type: 'rss', name: "Tom's Hardware", url: 'https://www.tomshardware.com/feeds/all', category: 'Hardware', lang: 'en' },
+  { type: 'rss', name: 'Phoronix', url: 'https://www.phoronix.com/rss.php', category: 'Hardware', lang: 'en' },
+  { type: 'reddit', name: 'r/hardware', url: 'https://www.reddit.com/r/hardware/.rss', category: 'Hardware', lang: 'en' },
+  // Crypto (anglais)
+  { type: 'rss', name: 'CoinDesk', url: 'https://www.coindesk.com/arc/outboundfeeds/rss/', category: 'Crypto', lang: 'en' },
+  { type: 'rss', name: 'Cointelegraph', url: 'https://cointelegraph.com/rss', category: 'Crypto', lang: 'en' },
+  { type: 'rss', name: 'Decrypt', url: 'https://decrypt.co/feed', category: 'Crypto', lang: 'en' },
+  // Jeux vidéo (anglais)
+  { type: 'rss', name: 'Polygon', url: 'https://www.polygon.com/rss/index.xml', category: 'Jeux vidéo', lang: 'en' },
+  { type: 'rss', name: 'Eurogamer', url: 'https://www.eurogamer.net/feed', category: 'Jeux vidéo', lang: 'en' },
+  { type: 'rss', name: 'PC Gamer', url: 'https://www.pcgamer.com/rss/', category: 'Jeux vidéo', lang: 'en' },
+  // Science (anglais)
+  { type: 'rss', name: 'ScienceDaily', url: 'https://www.sciencedaily.com/rss/all.xml', category: 'Science', lang: 'en' },
+  { type: 'rss', name: 'Quanta Magazine', url: 'https://www.quantamagazine.org/feed/', category: 'Science', lang: 'en' },
   // Espagnol
   { type: 'rss', name: 'Xataka', url: 'https://www.xataka.com/index.xml', category: 'Tech', lang: 'es' },
   { type: 'rss', name: 'Genbeta', url: 'https://www.genbeta.com/index.xml', category: 'Dev', lang: 'es' },

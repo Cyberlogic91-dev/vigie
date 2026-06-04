@@ -40,6 +40,12 @@ vide quand aucune source de cette langue n'existe) ajoute un catalogue de qualit
   r/programming, r/webdev, r/selfhosted
 - **EN — sécurité** : Krebs on Security, The Hacker News, BleepingComputer, Schneier on Security, r/netsec
 - **EN — IA** : Hugging Face, r/MachineLearning
+- **EN — cloud / DevOps** : AWS Blog, Kubernetes Blog, Docker Blog, The New Stack, DevOps.com, r/devops, r/kubernetes
+- **EN — hardware** : Tom's Hardware, Phoronix, r/hardware
+- **EN — crypto** : CoinDesk, Cointelegraph, Decrypt
+- **EN — jeux vidéo** : Polygon, Eurogamer, PC Gamer
+- **EN — science** : ScienceDaily, Quanta Magazine
+- **FR — jeux vidéo / science** : Gamekult, Jeuxvideo.com, Futura Sciences, Sciences et Avenir
 - **ES** : Xataka, Genbeta, Hipertextual, MuyComputer, ADSLZone, Xataka Android, FayerWayer
 - **DE** : heise, Golem, t3n, ComputerBase, Caschys Blog, netzpolitik.org, WinFuture
 - **IT** : Punto Informatico, HTML.it, DDay.it, TuttoAndroid, Wired Italia, HDblog
