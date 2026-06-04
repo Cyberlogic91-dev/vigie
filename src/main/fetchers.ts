@@ -126,7 +126,8 @@ async function fetchGithub(source: Source): Promise<Article[]> {
     headers: {
       Accept: 'application/vnd.github+json',
       'User-Agent': 'Vigie/0.1'
-    }
+    },
+    signal: AbortSignal.timeout(15000)
   })
   if (!res.ok) {
     throw new Error(`GitHub API ${res.status} pour ${repo}`)
@@ -157,7 +158,7 @@ async function fetchHackerNews(source: Source): Promise<Article[]> {
   const endpoint = query
     ? `https://hn.algolia.com/api/v1/search?query=${encodeURIComponent(query)}&tags=story&hitsPerPage=30`
     : `https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30`
-  const res = await fetch(endpoint, { headers: { 'User-Agent': 'Vigie/0.1' } })
+  const res = await fetch(endpoint, { headers: { 'User-Agent': 'Vigie/0.1' }, signal: AbortSignal.timeout(15000) })
   if (!res.ok) throw new Error(`Hacker News API ${res.status}`)
   const data = (await res.json()) as {
     hits: Array<{

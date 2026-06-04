@@ -19,6 +19,7 @@
     "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
     "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
+    "test": "vitest run",
     "icons": "node scripts/gen-icons.mjs",
     "package": "npm run icons && electron-vite build && electron-builder --win --dir",
     "dist": "npm run icons && electron-vite build && electron-builder --win",
@@ -43,7 +44,8 @@
     "react-dom": "^18.3.1",
     "sharp": "^0.34.5",
     "typescript": "^5.7.2",
-    "vite": "^5.4.11"
+    "vite": "^5.4.11",
+    "vitest": "^4.1.8"
   },
   "build": {
     "appId": "com.vigie.app",

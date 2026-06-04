@@ -37,7 +37,8 @@ async function summarizeOllama(
     res = await fetch(`${base}/api/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, prompt, stream: false, format: 'json' })
+      body: JSON.stringify({ model, prompt, stream: false, format: 'json' }),
+      signal: AbortSignal.timeout(120000)
     })
   } catch {
     throw new Error(
@@ -73,7 +74,8 @@ async function ollamaText(settings: AppSettings, prompt: string): Promise<string
     res = await fetch(`${base}/api/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model, prompt, stream: false })
+      body: JSON.stringify({ model, prompt, stream: false }),
+      signal: AbortSignal.timeout(120000)
     })
   } catch {
     throw new Error(

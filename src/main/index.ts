@@ -9,6 +9,16 @@ let refreshTimer: NodeJS.Timeout | null = null
 let digestTimer: NodeJS.Timeout | null = null
 let isQuitting = false
 
+/** Ouvre une URL dans le navigateur système uniquement si c'est du http(s). */
+function openExternalSafe(url: string): void {
+  try {
+    const u = new URL(url)
+    if (u.protocol === 'http:' || u.protocol === 'https:') void shell.openExternal(url)
+  } catch {
+    /* URL invalide → ignorée */
+  }
+}
+
 function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1280,
@@ -38,10 +48,19 @@ function createWindow(): void {
     }
   })
 
-  // Ouvre les liens externes dans le navigateur système
+  // Ouvre les liens externes dans le navigateur système (http/https uniquement)
   mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
+    openExternalSafe(details.url)
     return { action: 'deny' }
+  })
+
+  // Bloque toute navigation de la fenêtre privilégiée hors de l'app
+  // (un lien sans target ouvrirait sinon une page distante dans la fenêtre).
+  mainWindow.webContents.on('will-navigate', (e, url) => {
+    const devUrl = process.env['ELECTRON_RENDERER_URL']
+    if (devUrl && url.startsWith(devUrl)) return // HMR en développement
+    e.preventDefault()
+    openExternalSafe(url)
   })
 
   if (process.env['ELECTRON_RENDERER_URL']) {
