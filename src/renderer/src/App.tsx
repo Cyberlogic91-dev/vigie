@@ -18,6 +18,7 @@ import { Dashboard } from './components/Dashboard'
 import { ReadingMode } from './components/ReadingMode'
 import { BriefModal } from './components/BriefModal'
 import { OnboardingModal } from './components/OnboardingModal'
+import { Digest } from './components/Digest'
 
 /** Domaine d'un article/source pour le favicon. */
 function faviconUrl(u: string): string | null {
@@ -51,7 +52,7 @@ export default function App(): JSX.Element {
   const [showSources, setShowSources] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [settings, setSettings] = useState<AppSettings | null>(null)
-  const [view, setView] = useState<'feed' | 'dashboard'>('feed')
+  const [view, setView] = useState<'feed' | 'dashboard' | 'digest'>('feed')
   const [reading, setReading] = useState<Article | null>(null)
   const [groupBySource, setGroupBySource] = useState(false)
   const [counts, setCounts] = useState<UnreadCounts | null>(null)
@@ -397,6 +398,12 @@ export default function App(): JSX.Element {
           >
             <span>📊 Tableau de bord</span>
           </button>
+          <button
+            className={`nav-item ${view === 'digest' ? 'active' : ''}`}
+            onClick={() => setView('digest')}
+          >
+            <span>🗞️ Condensés</span>
+          </button>
         </div>
 
         <div className="nav-section">
@@ -494,21 +501,23 @@ export default function App(): JSX.Element {
               setSearch(e.target.value)
             }}
           />
+          {view !== 'dashboard' && (
+            <select
+              className="lang-select"
+              title="Langue du flux"
+              value={settings?.feedLanguage ?? 'all'}
+              onChange={(e) => changeFeedLanguage(e.target.value as FeedLanguage)}
+            >
+              <option value="all">🌐 Toutes langues</option>
+              {LANGS.map((l) => (
+                <option key={l.code} value={l.code}>
+                  {l.flag} {l.label}
+                </option>
+              ))}
+            </select>
+          )}
           {view === 'feed' && (
             <>
-              <select
-                className="lang-select"
-                title="Langue du flux"
-                value={settings?.feedLanguage ?? 'all'}
-                onChange={(e) => changeFeedLanguage(e.target.value as FeedLanguage)}
-              >
-                <option value="all">🌐 Toutes langues</option>
-                {LANGS.map((l) => (
-                  <option key={l.code} value={l.code}>
-                    {l.flag} {l.label}
-                  </option>
-                ))}
-              </select>
               <button
                 className="btn"
                 onClick={toggleLayout}
@@ -546,6 +555,21 @@ export default function App(): JSX.Element {
 
         {view === 'dashboard' ? (
           <Dashboard />
+        ) : view === 'digest' ? (
+          <Digest
+            articles={filteredArticles}
+            busy={summarizingBatch}
+            onCondense={summarizeUnread}
+            onOpen={(a) => {
+              if (!a.read) {
+                void window.vigie.markRead(a.id, true).then(() => {
+                  void loadArticles()
+                  refreshCounts()
+                })
+              }
+              setReading(a)
+            }}
+          />
         ) : (
           <div className={`content ${selected ? '' : 'single'}`}>
             <div className="article-list" ref={listRef} onScroll={onListScroll}>
