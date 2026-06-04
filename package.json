@@ -2,10 +2,12 @@
   "name": "vigie",
   "version": "0.1.0",
   "description": "Vigie — application de veille technologique",
+  "homepage": "https://www.cyberlogic.fr",
   "main": "./out/main/index.js",
   "author": {
     "name": "Cyberlogic",
-    "email": "contact@cyberlogic.fr"
+    "email": "contact@cyberlogic.fr",
+    "url": "https://www.cyberlogic.fr"
   },
   "license": "SEE LICENSE IN LICENSE",
   "private": true,

@@ -482,6 +482,9 @@ export default function App(): JSX.Element {
           <button className="nav-item" onClick={() => setShowSettings(true)}>
             🔧 Réglages
           </button>
+          <a className="site-link" href="https://www.cyberlogic.fr" target="_blank" rel="noreferrer">
+            🌐 www.cyberlogic.fr
+          </a>
         </div>
       </aside>
 

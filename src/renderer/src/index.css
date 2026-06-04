@@ -208,6 +208,22 @@ textarea:focus {
   padding: 12px;
   border-top: 1px solid var(--border);
 }
+.site-link {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+  padding: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+.site-link:hover {
+  color: var(--accent);
+  background: var(--bg-elev2);
+}
 
 /* ---------- Zone principale ---------- */
 .main {
