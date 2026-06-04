@@ -32,11 +32,17 @@ Le bouton **➕ Ajouter les sources recommandées** (dans *Réglages*, selon la 
 vide quand aucune source de cette langue n'existe) ajoute un catalogue de qualité :
 
 - **FR** : Numerama, Le Monde Informatique, Korben, LinuxFr, 01net, Génération-NT, Clubic, Frandroid,
-  Les Numériques, Developpez.com, ZDNet France, Journal du Geek, Presse-citron, Next, Silicon.fr, r/france
-- **EN** : Hacker News, The Verge, Ars Technica, TechCrunch, Wired, r/programming
-- **ES** : Xataka, Genbeta, Hipertextual, MuyComputer, ADSLZone
+  Les Numériques, Developpez.com, ZDNet France, Journal du Geek, Presse-citron, Next, Silicon.fr,
+  Tom's Hardware FR, Phonandroid, Siècle Digital, r/france
+- **EN — généraliste** : Hacker News, The Verge, Ars Technica, TechCrunch, Wired, Engadget, TechRadar,
+  VentureBeat, The Register, MIT Technology Review, Slashdot, r/technology
+- **EN — développement** : GitHub Blog, Stack Overflow Blog, Dev.to, InfoQ, Smashing Magazine, CSS-Tricks,
+  r/programming, r/webdev, r/selfhosted
+- **EN — sécurité** : Krebs on Security, The Hacker News, BleepingComputer, Schneier on Security, r/netsec
+- **EN — IA** : Hugging Face, r/MachineLearning
+- **ES** : Xataka, Genbeta, Hipertextual, MuyComputer, ADSLZone, Xataka Android, FayerWayer
 - **DE** : heise, Golem, t3n, ComputerBase, Caschys Blog, netzpolitik.org, WinFuture
-- **IT** : Punto Informatico, HTML.it, DDay.it, TuttoAndroid, Wired Italia
+- **IT** : Punto Informatico, HTML.it, DDay.it, TuttoAndroid, Wired Italia, HDblog
 - **PT** : Tecnoblog, Olhar Digital, Canaltech, Pplware
 
 ## Import / export OPML
