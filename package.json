@@ -61,7 +61,8 @@
       {
         "provider": "github",
         "owner": "Cyberlogic91-dev",
-        "repo": "vigie"
+        "repo": "vigie",
+        "releaseType": "release"
       }
     ],
     "win": {
