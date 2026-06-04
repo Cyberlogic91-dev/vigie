@@ -6,6 +6,12 @@
 technologique, en résume le contenu par IA — **gratuitement et hors-ligne** — et vous
 aide à organiser votre veille, le tout **en local, sans serveur ni compte**.
 
+## Aperçu
+
+![Interface de Vigie](images/vigie-interface.png)
+
+![Tableau de bord](images/vigie-dashboard.png)
+
 ## Démarrage rapide
 
 1. Installez Vigie (voir **[[Installation]]**).

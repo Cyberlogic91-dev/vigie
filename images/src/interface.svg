@@ -1,0 +1,124 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1326"/><stop offset="1" stop-color="#0b0d12"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6e8bff"/><stop offset="1" stop-color="#9b6bff"/>
+    </linearGradient>
+    <linearGradient id="cov1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#26406e"/><stop offset="1" stop-color="#3a2a63"/>
+    </linearGradient>
+    <linearGradient id="cov2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a5040"/><stop offset="1" stop-color="#27506e"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#33406e"/><stop offset="1" stop-color="#5b3a7a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+
+  <!-- ===== Sidebar ===== -->
+  <rect x="0" y="0" width="256" height="800" fill="#14171f"/>
+  <rect x="255" y="0" width="1.5" height="800" fill="#262c39"/>
+  <!-- radar mark -->
+  <g transform="translate(20,22)">
+    <rect width="26" height="26" rx="7" fill="#1c2747"/>
+    <circle cx="13" cy="13" r="9" fill="none" stroke="#6e8bff" stroke-width="1.6" opacity="0.8"/>
+    <circle cx="13" cy="13" r="5" fill="none" stroke="#6e8bff" stroke-width="1.6" opacity="0.8"/>
+    <line x1="13" y1="13" x2="13" y2="4" stroke="#a8c4ff" stroke-width="1.6"/>
+    <circle cx="13" cy="13" r="2.4" fill="#6e8bff"/>
+    <circle cx="17.5" cy="8.5" r="2" fill="#3ddc84"/>
+  </g>
+  <text x="56" y="40" font-size="20" font-weight="700" fill="url(#acc)">Vigie</text>
+
+  <text x="20" y="78" font-size="11" letter-spacing="1" fill="#98a1b3">VUE</text>
+  <rect x="12" y="86" width="232" height="34" rx="9" fill="#1c212c"/>
+  <text x="26" y="108" font-size="13" fill="#eef1f6">📊  Tableau de bord</text>
+
+  <text x="20" y="146" font-size="11" letter-spacing="1" fill="#98a1b3">FLUX</text>
+  <rect x="12" y="154" width="232" height="34" rx="9" fill="#232b46"/>
+  <rect x="12" y="158" width="3" height="26" rx="2" fill="url(#acc)"/>
+  <text x="26" y="176" font-size="13" fill="#eef1f6">📰  Tout</text>
+  <rect x="206" y="162" width="30" height="18" rx="9" fill="#0b0d12"/><text x="221" y="175" font-size="10" fill="#98a1b3" text-anchor="middle">214</text>
+  <text x="26" y="212" font-size="13" fill="#98a1b3">●  Non lus</text>
+  <rect x="206" y="198" width="30" height="18" rx="9" fill="#1c212c"/><text x="221" y="211" font-size="10" fill="#98a1b3" text-anchor="middle">38</text>
+  <text x="26" y="248" font-size="13" fill="#98a1b3">★  Favoris</text>
+
+  <text x="20" y="288" font-size="11" letter-spacing="1" fill="#98a1b3">TYPES DE SOURCE</text>
+  <text x="26" y="316" font-size="13" fill="#98a1b3">RSS / Atom</text>
+  <text x="26" y="344" font-size="13" fill="#98a1b3">Hacker News</text>
+  <text x="26" y="372" font-size="13" fill="#98a1b3">GitHub</text>
+
+  <text x="20" y="412" font-size="11" letter-spacing="1" fill="#98a1b3">CATÉGORIES</text>
+  <text x="26" y="440" font-size="13" fill="#98a1b3">🏷️ Tech</text>
+  <text x="26" y="468" font-size="13" fill="#98a1b3">🏷️ Dev</text>
+  <text x="26" y="496" font-size="13" fill="#98a1b3">🏷️ Mobile</text>
+
+  <rect x="0" y="724" width="256" height="1.5" fill="#262c39"/>
+  <text x="26" y="748" font-size="13" fill="#98a1b3">⚙️ Gérer les sources</text>
+  <text x="26" y="776" font-size="13" fill="#98a1b3">🔧 Réglages</text>
+
+  <!-- ===== Toolbar ===== -->
+  <rect x="256" y="0" width="1024" height="58" fill="#14171f"/>
+  <rect x="256" y="57" width="1024" height="1.5" fill="#262c39"/>
+  <rect x="276" y="14" width="320" height="30" rx="9" fill="#1c212c" stroke="#262c39"/>
+  <text x="292" y="33" font-size="12" fill="#98a1b3">Rechercher…  (/ pour cibler · j/k naviguer)</text>
+  <rect x="612" y="14" width="120" height="30" rx="9" fill="#1c212c" stroke="#262c39"/><text x="626" y="33" font-size="12" fill="#eef1f6">🌐 Français</text>
+  <rect x="744" y="14" width="96" height="30" rx="9" fill="#1c212c" stroke="#262c39"/><text x="758" y="33" font-size="12" fill="#98a1b3">▦ Magazine</text>
+  <rect x="852" y="14" width="86" height="30" rx="9" fill="#1c212c" stroke="#262c39"/><text x="866" y="33" font-size="12" fill="#98a1b3">📋 Brief</text>
+  <rect x="1162" y="14" width="100" height="30" rx="9" fill="url(#acc)"/><text x="1212" y="33" font-size="12" fill="#fff" text-anchor="middle">↻ Actualiser</text>
+
+  <!-- ===== Liste (magazine) ===== -->
+  <rect x="256" y="58" width="430" height="742" fill="#0b0d12"/>
+  <rect x="685" y="58" width="1.5" height="742" fill="#262c39"/>
+
+  <!-- carte 1 (sélectionnée) -->
+  <rect x="266" y="70" width="410" height="318" rx="12" fill="#171b26" stroke="#3a4a86"/>
+  <rect x="280" y="84" width="382" height="150" rx="9" fill="url(#cov1)"/>
+  <rect x="300" y="110" width="80" height="46" rx="8" fill="#ffffff" opacity="0.08"/>
+  <text x="280" y="262" font-size="10" fill="#6e8bff">RSS</text>
+  <text x="312" y="262" font-size="11" fill="#98a1b3">Numerama · 04/06/2026  🤖</text>
+  <text x="280" y="288" font-size="15" font-weight="700" fill="#eef1f6">Une puce ARM française vise les centres</text>
+  <text x="280" y="310" font-size="15" font-weight="700" fill="#eef1f6">de données</text>
+  <rect x="280" y="322" width="56" height="18" rx="9" fill="#232b46" stroke="#3a4a86"/><text x="308" y="335" font-size="10" fill="#eef1f6" text-anchor="middle">processeur</text>
+  <rect x="342" y="322" width="40" height="18" rx="9" fill="#232b46" stroke="#3a4a86"/><text x="362" y="335" font-size="10" fill="#eef1f6" text-anchor="middle">arm</text>
+  <text x="280" y="362" font-size="12" fill="#98a1b3">Consommation réduite de 40 %, performances</text>
+  <text x="280" y="380" font-size="12" fill="#98a1b3">comparables aux meilleures puces du marché.</text>
+
+  <!-- carte 2 -->
+  <rect x="266" y="400" width="410" height="300" rx="12" fill="#10131b"/>
+  <rect x="270" y="430" width="6" height="6" rx="3" fill="#6e8bff"/>
+  <rect x="280" y="414" width="382" height="140" rx="9" fill="url(#cov2)"/>
+  <text x="280" y="582" font-size="10" fill="#6e8bff">RSS</text>
+  <text x="312" y="582" font-size="11" fill="#98a1b3">The Verge · 04/06/2026</text>
+  <text x="280" y="608" font-size="15" font-weight="700" fill="#eef1f6">Open-source AI models hit a new</text>
+  <text x="280" y="630" font-size="15" font-weight="700" fill="#eef1f6">milestone</text>
+  <text x="280" y="664" font-size="12" fill="#98a1b3">A wave of permissively licensed models is</text>
+  <text x="280" y="682" font-size="12" fill="#98a1b3">reshaping how teams ship features.</text>
+
+  <!-- ===== Détail ===== -->
+  <rect x="686" y="58" width="594" height="742" fill="#0b0d12"/>
+  <text x="716" y="104" font-size="24" font-weight="700" fill="#eef1f6">Une puce ARM française vise</text>
+  <text x="716" y="134" font-size="24" font-weight="700" fill="#eef1f6">les centres de données</text>
+  <rect x="716" y="156" width="534" height="200" rx="12" fill="url(#hero)"/>
+  <text x="716" y="384" font-size="12" fill="#98a1b3">RSS · Numerama · par M. Dupont · 04/06/2026 · 🏷️ Tech</text>
+
+  <rect x="716" y="400" width="120" height="32" rx="9" fill="url(#acc)"/><text x="776" y="421" font-size="12" fill="#fff" text-anchor="middle">🔗 Ouvrir</text>
+  <rect x="848" y="400" width="92" height="32" rx="9" fill="#1c212c" stroke="#262c39"/><text x="894" y="421" font-size="12" fill="#eef1f6" text-anchor="middle">📖 Lecture</text>
+  <rect x="952" y="400" width="110" height="32" rx="9" fill="#1c212c" stroke="#262c39"/><text x="1007" y="421" font-size="12" fill="#eef1f6" text-anchor="middle">🤖 Résumer</text>
+  <rect x="1074" y="400" width="92" height="32" rx="9" fill="#1c212c" stroke="#262c39"/><text x="1120" y="421" font-size="12" fill="#eef1f6" text-anchor="middle">🌐 Traduire</text>
+
+  <rect x="716" y="448" width="534" height="92" rx="10" fill="#14171f" stroke="#262c39"/>
+  <rect x="716" y="448" width="3" height="92" fill="url(#acc)"/>
+  <text x="732" y="470" font-size="11" letter-spacing="1" fill="#6e8bff">🤖 RÉSUMÉ IA</text>
+  <text x="732" y="494" font-size="13" fill="#cfd6e6">Une entreprise française dévoile un processeur ARM</text>
+  <text x="732" y="514" font-size="13" fill="#cfd6e6">pour data centers, 40 % plus sobre, aux performances</text>
+  <text x="732" y="534" font-size="13" fill="#cfd6e6">comparables aux meilleures puces du marché.</text>
+
+  <text x="716" y="576" font-size="13" fill="#98a1b3">Le constructeur promet une disponibilité au troisième trimestre. Plusieurs</text>
+  <text x="716" y="598" font-size="13" fill="#98a1b3">acteurs du cloud ont déjà manifesté leur intérêt pour la technologie, qui</text>
+  <text x="716" y="620" font-size="13" fill="#98a1b3">cible une réduction significative de la facture énergétique des serveurs.</text>
+  <text x="716" y="642" font-size="13" fill="#98a1b3">Les premiers tests indépendants confirment des gains substantiels.</text>
+</svg>

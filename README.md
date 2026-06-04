@@ -4,6 +4,16 @@
 
 Application bureau (Windows) de **veille technologique**. Agrège plusieurs sources, génère des résumés par IA, classe par catégories/tags, et vous notifie des nouveautés — le tout en local, sans serveur.
 
+## Aperçu
+
+![Interface de Vigie — flux et détail](images/vigie-interface.png)
+*Le flux en vue magazine et le panneau de détail avec résumé IA.*
+
+![Tableau de bord de Vigie](images/vigie-dashboard.png)
+*Le tableau de bord : statistiques, activité et répartitions.*
+
+> Visuels d'aperçu (rendu fidèle à l'interface réelle).
+
 ## Fonctionnalités
 
 - **Multilingue** : 6 langues (FR, EN, ES, DE, IT, PT) — filtre du flux, langue des résumés IA, et **détection automatique** de la langue de chaque article + catalogue de sources recommandées par langue
