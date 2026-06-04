@@ -31,8 +31,8 @@ function createWindow(): void {
     icon: join(__dirname, '../../build/icon.png'),
     backgroundColor: '#0f1115',
     webPreferences: {
-      preload: join(__dirname, '../preload/index.mjs'),
-      sandbox: false,
+      preload: join(__dirname, '../preload/index.cjs'),
+      sandbox: true,
       contextIsolation: true,
       nodeIntegration: false
     }
