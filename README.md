@@ -103,3 +103,9 @@ src/
 ├── renderer/    # Interface React + Vite
 └── shared/      # Types partagés
 ```
+
+## Licence
+
+**Logiciel propriétaire — Tous droits réservés.** © 2026 Mickael Monestier.
+Toute redistribution, publication, revente ou modification est interdite sans
+autorisation écrite. Voir le fichier [LICENSE](LICENSE) pour les conditions complètes.

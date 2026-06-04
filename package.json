@@ -7,7 +7,8 @@
     "name": "Mickael Monestier",
     "email": "mickaelmonestier@gmail.com"
   },
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "electron-vite dev",
