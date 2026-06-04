@@ -220,11 +220,6 @@ export interface VigieAPI {
   getSettings: () => Promise<AppSettings>
   saveSettings: (settings: AppSettings) => Promise<AppSettings>
 
-  // Mise à jour automatique
-  installUpdate: () => Promise<void>
-
   // Événements (main -> renderer)
   onRefreshProgress: (cb: (msg: string) => void) => () => void
-  onUpdateStatus: (cb: (msg: string) => void) => () => void
-  onUpdateReady: (cb: (version: string) => void) => () => void
 }

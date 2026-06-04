@@ -43,9 +43,6 @@ const api: VigieAPI = {
   getSettings: () => ipcRenderer.invoke('settings:get'),
   saveSettings: (settings) => ipcRenderer.invoke('settings:save', settings),
 
-  // Mise à jour automatique
-  installUpdate: () => ipcRenderer.invoke('update:install'),
-
   // Événements
   onRefreshProgress: (cb) => {
     const handler = (_e: unknown, msg: string): void => cb(msg)
@@ -56,16 +53,6 @@ const api: VigieAPI = {
       ipcRenderer.removeListener('refresh:progress', handler)
       ipcRenderer.removeListener('articles:updated', updated)
     }
-  },
-  onUpdateStatus: (cb) => {
-    const handler = (_e: unknown, msg: string): void => cb(msg)
-    ipcRenderer.on('update:status', handler)
-    return () => ipcRenderer.removeListener('update:status', handler)
-  },
-  onUpdateReady: (cb) => {
-    const handler = (_e: unknown, v: string): void => cb(v)
-    ipcRenderer.on('update:ready', handler)
-    return () => ipcRenderer.removeListener('update:ready', handler)
   }
 }
 

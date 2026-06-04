@@ -49,28 +49,7 @@ npm run build      # compile main + preload + renderer dans out/
 npm run package    # génère l'app non empaquetée (release/win-unpacked)
 npm run dist       # installeur NSIS → release/Vigie-Setup-<version>.exe
 npm run dist:msi   # (optionnel) MSI via electron-wix-msi (WiX 3.14, voir ci-dessous)
-npm run release    # build + publication de la Release GitHub (mise à jour auto)
 ```
-
-## Mise à jour automatique (GitHub Releases)
-
-Vigie embarque `electron-updater` : la version installée vérifie GitHub au démarrage (puis toutes les 6 h),
-télécharge la mise à jour en arrière-plan et propose **« Redémarrer pour installer »**.
-
-Mise en place (une fois) :
-
-1. Créez un dépôt GitHub (ex. nommé `vigie`).
-2. Dans [package.json](package.json) → `build.publish`, remplacez `VOTRE_PSEUDO_GITHUB` par votre pseudo GitHub.
-3. Créez un *Personal Access Token* (classic, scope `repo`) et exposez-le :
-   ```powershell
-   $env:GH_TOKEN = "ghp_xxx"
-   ```
-4. Incrémentez `version` dans `package.json`, puis publiez :
-   ```powershell
-   npm run release
-   ```
-   electron-builder téléverse l'installeur **et** `latest.yml` dans une Release. Les clients déjà installés
-   détecteront et installeront automatiquement la nouvelle version.
 
 L'installeur **NSIS** (`.exe`) est le format par défaut : **par-utilisateur** (sans droits admin), icône
 correcte, raccourcis bureau + menu Démarrer, choix du dossier d'installation, et **lancement de l'app à la fin**.
@@ -96,7 +75,7 @@ src/
 ├── main/        # Processus principal Electron (fenêtre, planification)
 │   ├── store.ts     # Persistance JSON locale
 │   ├── fetchers.ts  # Collecte RSS / GitHub / HN / Reddit / Mastodon
-│   ├── ai.ts        # Résumés via l'API Claude
+│   ├── ai.ts        # Résumés IA (local / Ollama)
 │   ├── ipc.ts       # Handlers IPC + orchestration
 │   └── index.ts     # Entrée, timers (refresh, digest)
 ├── preload/     # Pont sécurisé (contextBridge)

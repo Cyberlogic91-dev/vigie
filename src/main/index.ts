@@ -2,7 +2,6 @@ import { app, shell, BrowserWindow, Notification, Tray, Menu, nativeImage } from
 import { join } from 'path'
 import { initStore, getSettings, saveSettings } from './store'
 import { registerIpc, refreshAllSources } from './ipc'
-import { initAutoUpdate } from './updater'
 
 let mainWindow: BrowserWindow | null = null
 let tray: Tray | null = null
@@ -159,7 +158,6 @@ if (!gotLock) {
     createWindow()
     createTray()
     handleVersionChange()
-    initAutoUpdate(() => mainWindow)
     scheduleRefresh()
     scheduleDigest()
 

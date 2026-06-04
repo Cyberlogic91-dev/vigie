@@ -22,12 +22,10 @@
     "icons": "node scripts/gen-icons.mjs",
     "package": "npm run icons && electron-vite build && electron-builder --win --dir",
     "dist": "npm run icons && electron-vite build && electron-builder --win",
-    "dist:msi": "npm run package && node scripts/build-msi.mjs",
-    "release": "npm run icons && electron-vite build && electron-builder --win --publish always"
+    "dist:msi": "npm run package && node scripts/build-msi.mjs"
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
-    "electron-updater": "^6.8.3",
     "linkedom": "^0.18.12",
     "rss-parser": "^3.13.0"
   },
@@ -59,14 +57,6 @@
       "out/**/*"
     ],
     "artifactName": "${productName}-Setup-${version}.${ext}",
-    "publish": [
-      {
-        "provider": "github",
-        "owner": "Cyberlogic91-dev",
-        "repo": "vigie",
-        "releaseType": "release"
-      }
-    ],
     "win": {
       "target": [
         "nsis"
