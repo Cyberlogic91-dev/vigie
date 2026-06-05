@@ -5,10 +5,8 @@
 [![Téléchargements](https://img.shields.io/github/downloads/Cyberlogic91-dev/vigie/total?color=6e8bff&label=t%C3%A9l%C3%A9chargements&logo=github)](https://github.com/Cyberlogic91-dev/vigie/releases)
 [![Dernière version](https://img.shields.io/github/v/release/Cyberlogic91-dev/vigie?color=9b6bff&label=version)](https://github.com/Cyberlogic91-dev/vigie/releases/latest)
 ![Licence](https://img.shields.io/badge/licence-propri%C3%A9taire-red)
-![Plateforme](https://img.shields.io/badge/plateforme-Windows-0a7bbb?logo=windows)  
-[![Téléchargements dernière version](https://img.shields.io/github/downloads/Cyberlogic91-dev/vigie/latest/total?color=6e8bff&label=t%C3%A9l.%20derni%C3%A8re%20version)](https://github.com/Cyberlogic91-dev/vigie/releases/latest)
-![Date de publication](https://img.shields.io/github/release-date/Cyberlogic91-dev/vigie?label=publi%C3%A9e%20le)
-![Dernière mise à jour](https://img.shields.io/github/last-commit/Cyberlogic91-dev/vigie?label=dernier%20commit)
+![Plateforme](https://img.shields.io/badge/plateforme-Windows-0a7bbb?logo=windows)
+![Signature](https://img.shields.io/badge/sign%C3%A9-CYBERLOGIC-3ddc84?logo=windows)
 ![Étoiles](https://img.shields.io/github/stars/Cyberlogic91-dev/vigie?style=flat&color=f5c518)
 
 Application bureau (Windows) de **veille technologique**. Agrège plusieurs sources, génère des résumés par IA, classe par catégories/tags, et vous notifie des nouveautés — le tout en local, sans serveur.
