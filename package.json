@@ -65,7 +65,8 @@
       ],
       "icon": "build/icon.ico",
       "signtoolOptions": {
-        "publisherName": "Cyberlogic"
+        "publisherName": "CYBERLOGIC",
+        "certificateSha1": "D92CAF8ACED87FB45E138BBAD70C510F066E6655"
       }
     },
     "nsis": {
