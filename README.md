@@ -2,6 +2,11 @@
 
 > *La sentinelle de votre veille technologique.*
 
+[![Téléchargements](https://img.shields.io/github/downloads/Cyberlogic91-dev/vigie/total?color=6e8bff&label=t%C3%A9l%C3%A9chargements&logo=github)](https://github.com/Cyberlogic91-dev/vigie/releases)
+[![Dernière version](https://img.shields.io/github/v/release/Cyberlogic91-dev/vigie?color=9b6bff&label=version)](https://github.com/Cyberlogic91-dev/vigie/releases/latest)
+![Licence](https://img.shields.io/badge/licence-propri%C3%A9taire-red)
+![Plateforme](https://img.shields.io/badge/plateforme-Windows-0a7bbb?logo=windows)
+
 Application bureau (Windows) de **veille technologique**. Agrège plusieurs sources, génère des résumés par IA, classe par catégories/tags, et vous notifie des nouveautés — le tout en local, sans serveur.
 
 ## Aperçu
