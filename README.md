@@ -11,6 +11,20 @@
 
 Application bureau (Windows) de **veille technologique**. Agrège plusieurs sources, génère des résumés par IA, classe par catégories/tags, et vous notifie des nouveautés — le tout en local, sans serveur.
 
+<p align="center">
+  <a href="https://github.com/Cyberlogic91-dev/vigie/releases/latest">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20T%C3%A9l%C3%A9charger%20Vigie-Windows%2064--bit-6e8bff?style=for-the-badge&logo=windows&logoColor=white" alt="Télécharger Vigie" height="46">
+  </a>
+</p>
+
+**Partager :**
+[![X](https://img.shields.io/badge/X-000000?logo=x&logoColor=white)](https://twitter.com/intent/tweet?text=Vigie%20%E2%80%94%20application%20de%20veille%20technologique%20gratuite&url=https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie)
+[![Reddit](https://img.shields.io/badge/Reddit-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/submit?url=https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie&title=Vigie%20%E2%80%94%20veille%20technologique)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?logo=whatsapp&logoColor=white)](https://wa.me/?text=Vigie%20%E2%80%94%20veille%20technologique%20https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie)
+[![Telegram](https://img.shields.io/badge/Telegram-26A5E4?logo=telegram&logoColor=white)](https://t.me/share/url?url=https%3A%2F%2Fgithub.com%2FCyberlogic91-dev%2Fvigie&text=Vigie%20%E2%80%94%20veille%20technologique)
+
 ## Aperçu
 
 ![Interface de Vigie — flux et détail](images/vigie-interface.png)
