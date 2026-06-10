@@ -24,11 +24,14 @@ Vigie se compose de trois zones :
 
 - **Catégories** : chaque source a une catégorie ; les articles en héritent. Filtrez via la barre latérale.
 - **Tags** : ajoutez/retirez des tags par article dans le panneau de détail (champ *+ tag*). L'IA en propose aussi.
-- **Favoris** : marquez les articles à conserver, filtrables via *★ Favoris*.
+- **Favoris** : marquez les articles à conserver, filtrables via *★ Favoris*. Un article mis en favori est
+  automatiquement enrichi en arrière-plan avec son **texte intégral**.
 
 ## Rechercher et filtrer
 
 - **Recherche** : champ en haut (titre + contenu + résumé). Astuce : touche `/` pour y accéder au clavier.
+- **Recherches enregistrées** : quand une recherche/des filtres sont actifs, le bouton **🔖** les sauvegarde sous
+  un nom ; elles apparaissent dans la section **Recherches** de la barre latérale (un clic les réapplique, ✕ pour supprimer).
 - **Filtres** : *Tout*, *Non lus*, *Favoris*, par **type de source** et par **catégorie** (barre latérale).
 - **Filtres par mots-clés** (Réglages) : *masquer* les articles contenant certains mots, ou *mettre en avant* (surlignage).
 

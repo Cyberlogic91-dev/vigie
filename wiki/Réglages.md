@@ -17,6 +17,7 @@ Accès via **🔧 Réglages** (barre latérale). Tous les réglages sont stocké
 - **Actualisation auto** : intervalle en minutes (0 = désactivé).
 - **Digest quotidien** : heure `HH:mm` (vide = désactivé) — actualise et notifie une fois par jour.
 - **Notifications système** pour les nouveaux articles.
+- **Marquer comme lus les articles dépassés au défilement** (lecture façon fil d'actualité).
 - **Réduire dans la zone de notification** au lieu de quitter (actualisation en arrière-plan, icône *tray*).
 
 ## Apparence
