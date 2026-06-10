@@ -349,6 +349,43 @@ export default function App(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filteredArticles, selected, reading, showSettings, showSources])
 
+  // Marquer lu au défilement : un article dont la carte sort par le haut est marqué lu
+  useEffect(() => {
+    if (!settings?.markReadOnScroll || view !== 'feed') return
+    const container = listRef.current
+    if (!container) return
+    const pending = new Set<string>()
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const flush = (): void => {
+      timer = null
+      const ids = [...pending]
+      pending.clear()
+      if (ids.length === 0) return
+      void Promise.all(ids.map((id) => window.vigie.markRead(id, true))).then(() => {
+        setArticles((list) => list.map((a) => (ids.includes(a.id) ? { ...a, read: true } : a)))
+        refreshCounts()
+      })
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          // La carte est sortie par le haut du conteneur
+          if (!e.isIntersecting && e.boundingClientRect.bottom < (e.rootBounds?.top ?? 0) + 1) {
+            const id = (e.target as HTMLElement).dataset.id
+            if (id) pending.add(id)
+          }
+        }
+        if (pending.size > 0 && !timer) timer = setTimeout(flush, 400)
+      },
+      { root: container, threshold: 0 }
+    )
+    container.querySelectorAll('.article-card[data-unread]').forEach((el) => observer.observe(el))
+    return () => {
+      if (timer) clearTimeout(timer)
+      observer.disconnect()
+    }
+  }, [settings?.markReadOnScroll, view, visibleArticles])
+
   const activeKey = useMemo(() => {
     if (query.starredOnly) return 'starred'
     if (query.unreadOnly) return 'unread'
@@ -428,6 +465,8 @@ export default function App(): JSX.Element {
   const renderCard = (art: Article): JSX.Element => (
     <div
       key={art.id}
+      data-id={art.id}
+      data-unread={art.read ? undefined : ''}
       className={`article-card ${art.read ? '' : 'unread'} ${selected?.id === art.id ? 'selected' : ''} ${
         matchesAny(art, highlightList) ? 'highlight' : ''
       }`}

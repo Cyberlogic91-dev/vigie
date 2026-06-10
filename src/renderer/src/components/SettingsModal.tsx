@@ -158,6 +158,20 @@ export function SettingsModal({ initial, onClose, onSaved, onToast, onDataChange
           </div>
         </div>
 
+        <div className="field">
+          <div className="checkbox">
+            <input
+              type="checkbox"
+              id="scrollread"
+              checked={s.markReadOnScroll}
+              onChange={(e) => set('markReadOnScroll', e.target.checked)}
+            />
+            <label htmlFor="scrollread" style={{ margin: 0 }}>
+              Marquer comme lus les articles dépassés au défilement
+            </label>
+          </div>
+        </div>
+
         <div className="row">
           <div className="field">
             <label>Thème</label>

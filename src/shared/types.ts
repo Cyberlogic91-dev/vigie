@@ -108,6 +108,8 @@ export interface AppSettings {
   autoDetectLang: boolean
   /** Recherches enregistrées (dossiers intelligents) */
   savedSearches: SavedSearch[]
+  /** Marquer automatiquement comme lus les articles dépassés au défilement */
+  markReadOnScroll: boolean
 }
 
 /** Une recherche enregistrée : un nom + la combinaison de filtres à rappeler */
@@ -170,7 +172,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
   lastVersion: '',
   feedLanguage: 'all',
   autoDetectLang: true,
-  savedSearches: []
+  savedSearches: [],
+  markReadOnScroll: false
 }
 
 /** Une source proposée dans le catalogue de sources recommandées */

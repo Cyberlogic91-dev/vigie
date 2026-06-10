@@ -95,7 +95,21 @@ export function registerIpc(onSettingsChanged?: () => void): void {
   ipcMain.handle('articles:get', (_e, q: ArticleQuery) => store.queryArticles(q))
   ipcMain.handle('articles:markRead', (_e, id: string, read: boolean) => store.markRead(id, read))
   ipcMain.handle('articles:markAllRead', (_e, q: ArticleQuery) => store.markAllRead(q))
-  ipcMain.handle('articles:toggleStar', (_e, id: string) => store.toggleStar(id))
+  ipcMain.handle('articles:toggleStar', (_e, id: string) => {
+    store.toggleStar(id)
+    // Un article mis en favori est enrichi en arrière-plan avec son texte intégral
+    const art = store.getArticleById(id)
+    if (art?.starred && !art.hasFullText && art.link) {
+      void extractFullText(art.link)
+        .then(({ text }) => {
+          store.setArticleContent(id, text)
+          broadcast('articles:updated')
+        })
+        .catch(() => {
+          /* best-effort : extrait RSS conservé si la page résiste */
+        })
+    }
+  })
   ipcMain.handle('articles:setTags', (_e, id: string, tags: string[]) => store.setArticleTags(id, tags))
   ipcMain.handle('articles:categories', () => store.getCategories())
   ipcMain.handle('articles:tags', () => store.getAllTags())

@@ -339,6 +339,9 @@ textarea:focus {
   border-radius: var(--radius);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+  /* Virtualisation native : le rendu des cartes hors écran est sauté */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
 }
 .article-card:hover {
   background: var(--bg-elev);
@@ -765,6 +768,8 @@ textarea:focus {
   padding: 16px 18px;
   cursor: pointer;
   transition: border-color 0.15s, transform 0.12s, box-shadow 0.15s;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 150px;
 }
 .digest-item:hover {
   border-color: var(--accent);
