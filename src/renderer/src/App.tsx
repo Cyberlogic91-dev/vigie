@@ -7,7 +7,8 @@ import type {
   Lang,
   FeedLanguage,
   Source,
-  UnreadCounts
+  UnreadCounts,
+  SavedSearch
 } from '../../shared/types'
 import { LANGS } from '../../shared/types'
 import { decodeEntities } from '../../shared/text'
@@ -58,6 +59,8 @@ export default function App(): JSX.Element {
   const [counts, setCounts] = useState<UnreadCounts | null>(null)
   const [limit, setLimit] = useState(PAGE)
   const [brief, setBrief] = useState<{ loading: boolean; text: string } | null>(null)
+  const [savingSearch, setSavingSearch] = useState(false)
+  const [searchName, setSearchName] = useState('')
   const searchRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -166,6 +169,54 @@ export default function App(): JSX.Element {
     if (!settings) return
     const cardLayout = settings.cardLayout === 'magazine' ? 'compact' : 'magazine'
     const saved = await window.vigie.saveSettings({ ...settings, cardLayout })
+    setSettings(saved)
+  }
+
+  // ---- Recherches enregistrées (dossiers intelligents) ----
+  const hasActiveFilter = Boolean(
+    search.trim() || query.unreadOnly || query.starredOnly || query.category || query.sourceType || query.tag
+  )
+
+  const describeQuery = (): string => {
+    const parts: string[] = []
+    if (search.trim()) parts.push(`« ${search.trim()} »`)
+    if (query.unreadOnly) parts.push('non lus')
+    if (query.starredOnly) parts.push('favoris')
+    if (query.category) parts.push(query.category)
+    if (query.sourceType) parts.push(query.sourceType)
+    return parts.join(' · ') || 'Recherche'
+  }
+
+  const saveCurrentSearch = async (): Promise<void> => {
+    if (!settings) return
+    const name = searchName.trim() || describeQuery()
+    const entry: SavedSearch = {
+      id: Math.random().toString(36).slice(2, 10),
+      name,
+      query: { ...query, search: search.trim() || undefined }
+    }
+    const saved = await window.vigie.saveSettings({
+      ...settings,
+      savedSearches: [...(settings.savedSearches ?? []), entry]
+    })
+    setSettings(saved)
+    setSavingSearch(false)
+    setSearchName('')
+    setToast(`Recherche « ${name} » enregistrée`)
+  }
+
+  const applySavedSearch = (s: SavedSearch): void => {
+    setView('feed')
+    setSearch(s.query.search ?? '')
+    setQuery(s.query)
+  }
+
+  const removeSavedSearch = async (id: string): Promise<void> => {
+    if (!settings) return
+    const saved = await window.vigie.saveSettings({
+      ...settings,
+      savedSearches: (settings.savedSearches ?? []).filter((x) => x.id !== id)
+    })
     setSettings(saved)
   }
 
@@ -444,6 +495,22 @@ export default function App(): JSX.Element {
           </button>
         </div>
 
+        {settings && (settings.savedSearches ?? []).length > 0 && (
+          <div className="nav-section">
+            <h4>Recherches</h4>
+            {settings.savedSearches.map((s) => (
+              <div key={s.id} className="nav-item saved-search">
+                <button className="saved-search-apply" onClick={() => applySavedSearch(s)} title={s.name}>
+                  🔖 {s.name}
+                </button>
+                <button className="saved-search-del" title="Supprimer" onClick={() => removeSavedSearch(s.id)}>
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="nav-section">
           <h4>Types de source</h4>
           {SOURCE_TYPES.map(({ type, label }) => (
@@ -521,6 +588,32 @@ export default function App(): JSX.Element {
               ))}
             </select>
           )}
+          {view !== 'dashboard' &&
+            hasActiveFilter &&
+            (savingSearch ? (
+              <input
+                className="save-search-input"
+                autoFocus
+                placeholder="Nom de la recherche…"
+                value={searchName}
+                onChange={(e) => setSearchName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') void saveCurrentSearch()
+                  if (e.key === 'Escape') {
+                    setSavingSearch(false)
+                    setSearchName('')
+                  }
+                }}
+              />
+            ) : (
+              <button
+                className="btn"
+                onClick={() => setSavingSearch(true)}
+                title="Enregistrer la recherche et les filtres courants"
+              >
+                🔖
+              </button>
+            ))}
           {view === 'feed' && (
             <>
               <button

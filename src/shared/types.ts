@@ -106,6 +106,15 @@ export interface AppSettings {
   feedLanguage: FeedLanguage
   /** Détecter automatiquement la langue de chaque article (sources multilingues) */
   autoDetectLang: boolean
+  /** Recherches enregistrées (dossiers intelligents) */
+  savedSearches: SavedSearch[]
+}
+
+/** Une recherche enregistrée : un nom + la combinaison de filtres à rappeler */
+export interface SavedSearch {
+  id: string
+  name: string
+  query: ArticleQuery
 }
 
 export interface FetchResult {
@@ -160,7 +169,8 @@ export const DEFAULT_SETTINGS: AppSettings = {
   onboarded: false,
   lastVersion: '',
   feedLanguage: 'all',
-  autoDetectLang: true
+  autoDetectLang: true,
+  savedSearches: []
 }
 
 /** Une source proposée dans le catalogue de sources recommandées */

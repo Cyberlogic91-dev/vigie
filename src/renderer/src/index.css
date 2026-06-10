@@ -786,6 +786,36 @@ textarea:focus {
   font-style: italic;
   opacity: 0.8;
 }
+/* Recherches enregistrées */
+.nav-item.saved-search {
+  padding: 0;
+}
+.saved-search-apply {
+  flex: 1;
+  text-align: left;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.saved-search-del {
+  padding: 0 10px;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s;
+}
+.nav-item.saved-search:hover .saved-search-del {
+  opacity: 1;
+}
+.saved-search-del:hover {
+  color: var(--danger);
+}
+.save-search-input {
+  width: 190px;
+}
+
 .dup-badge {
   font-size: 10px;
   padding: 1px 8px;
