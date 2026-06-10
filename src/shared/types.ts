@@ -65,6 +65,8 @@ export interface Article {
   starred: boolean
   /** Vrai si le texte intégral a été récupéré (Readability) */
   hasFullText?: boolean
+  /** Transient : nombre de sources couvrant le même sujet (rempli à la requête) */
+  dupCount?: number
 }
 
 /** Fournisseur d'IA pour les résumés (aucun ne nécessite de clé/API payante) */

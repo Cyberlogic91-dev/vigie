@@ -19,9 +19,11 @@ utilisez **📄 Texte complet** sur l'article.
 ### Comment lire un article dans une autre langue ?
 Bouton **🌐 Traduire** (nécessite Ollama). Voir **[[Langues et traduction]]**.
 
-### Windows affiche « éditeur inconnu » à l'installation
-L'installeur n'est pas signé par un certificat payant. Cliquez **Informations complémentaires →
-Exécuter quand même**. L'application est sûre et s'installe sans droits administrateur.
+### L'application est-elle signée ?
+Oui — l'installeur et les exécutables sont **signés numériquement** (éditeur **CYBERLOGIC**, signature horodatée).
+Sur un poste qui approuve ce certificat, aucun avertissement. Comme le certificat est **auto-signé** (gratuit, non
+émis par une autorité publique), un **téléchargement grand public** peut toujours afficher Windows SmartScreen :
+cliquez **Informations complémentaires → Exécuter quand même**. L'app est sûre et s'installe sans droits administrateur.
 
 ### Comment faire une sauvegarde ?
 *Réglages → Données → Exporter une sauvegarde* (fichier JSON). Voir **[[Sauvegarde et données]]**.

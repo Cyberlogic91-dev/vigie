@@ -328,6 +328,11 @@ export default function App(): JSX.Element {
         <span>{new Date(art.publishedAt).toLocaleDateString('fr-FR')}</span>
         {art.starred && <span className="star on">★</span>}
         {art.summary && <span title="Résumé IA disponible">🤖</span>}
+        {(art.dupCount ?? 1) > 1 && (
+          <span className="dup-badge" title="Sujet couvert par plusieurs sources">
+            🔁 {art.dupCount} sources
+          </span>
+        )}
       </div>
     )
     const tags = art.tags.length > 0 && (

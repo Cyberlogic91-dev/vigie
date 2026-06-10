@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import type { Article } from '../../../shared/types'
-import { toParagraphs, decodeEntities } from '../../../shared/text'
+import { toParagraphs, decodeEntities, readingTimeMin } from '../../../shared/text'
 
 interface Props {
   article: Article
@@ -37,6 +37,7 @@ export function ReadingMode({ article, onClose }: Props): JSX.Element {
           {article.author && <span>par {article.author}</span>}
           <span>{new Date(article.publishedAt).toLocaleString('fr-FR')}</span>
           <span>🏷️ {article.category}</span>
+          {article.content && <span>⏱️ {readingTimeMin(article.content)} min de lecture</span>}
         </div>
         {article.image && (
           <img

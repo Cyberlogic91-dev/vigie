@@ -12,8 +12,10 @@
 4. Choisissez éventuellement le dossier d'installation, puis laissez l'installation se terminer.
 5. Vigie se lance automatiquement à la fin et crée des raccourcis **Bureau** et **menu Démarrer**.
 
-> ⚠️ Comme l'installeur n'est pas signé par un certificat payant, Windows SmartScreen peut afficher
-> un avertissement « éditeur inconnu » au premier lancement : cliquez sur **Informations complémentaires → Exécuter quand même**.
+> ℹ️ L'installeur est **signé numériquement** (éditeur **CYBERLOGIC**, signature horodatée). Sur les postes où
+> ce certificat est approuvé (vos machines, parc d'entreprise via GPO), aucun avertissement. En revanche, comme
+> le certificat est **auto-signé** (non émis par une autorité publique payante), un **téléchargement grand public**
+> peut encore déclencher Windows SmartScreen : cliquez **Informations complémentaires → Exécuter quand même**.
 
 ## Premier lancement
 

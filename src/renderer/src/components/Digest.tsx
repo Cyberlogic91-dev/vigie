@@ -48,6 +48,11 @@ export function Digest({ articles, busy, onCondense, onOpen }: Props): JSX.Eleme
                 <span>·</span>
                 <span>{new Date(a.publishedAt).toLocaleDateString('fr-FR')}</span>
                 {a.summary && <span title="Résumé par IA">🤖</span>}
+                {(a.dupCount ?? 1) > 1 && (
+                  <span className="dup-badge" title="Sujet couvert par plusieurs sources">
+                    🔁 {a.dupCount} sources
+                  </span>
+                )}
                 {!a.read && <span className="dot-unread" />}
               </div>
               <h3 className="digest-title">{a.title}</h3>

@@ -43,3 +43,25 @@ export function toParagraphs(text: string): string[] {
     .map((p) => p.trim())
     .filter((p) => p.length > 0)
 }
+
+/**
+ * Clé de normalisation d'un titre pour détecter les doublons inter-sources :
+ * minuscules, sans accents, sans ponctuation, espaces réduits.
+ * Retourne '' si le titre est trop court pour être discriminant.
+ */
+export function normalizeTitleKey(title: string): string {
+  const key = decodeEntities(title)
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // retire les diacritiques
+    .replace(/[^a-z0-9 ]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return key.length >= 20 ? key : ''
+}
+
+/** Temps de lecture estimé en minutes (~220 mots/min), minimum 1. */
+export function readingTimeMin(text: string): number {
+  const words = (text.match(/\S+/g) ?? []).length
+  return Math.max(1, Math.round(words / 220))
+}

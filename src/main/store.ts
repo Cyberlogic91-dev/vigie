@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import type { Article, Source, AppSettings, ArticleQuery, Stats, RecommendedSource, FeedLanguage } from '../shared/types'
 import { DEFAULT_SETTINGS } from '../shared/types'
+import { normalizeTitleKey } from '../shared/text'
 
 // Catalogue de sources recommandées, par langue
 export const RECOMMENDED_SOURCES: RecommendedSource[] = [
@@ -153,8 +154,32 @@ function load(): Database {
   }
 }
 
-function persist(): void {
+// Écriture différée : regroupe les modifications rapprochées en une seule écriture disque.
+let saveTimer: NodeJS.Timeout | null = null
+
+function persistNow(): void {
+  if (saveTimer) {
+    clearTimeout(saveTimer)
+    saveTimer = null
+  }
   writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8')
+}
+
+function persist(): void {
+  if (saveTimer) return
+  saveTimer = setTimeout(() => {
+    saveTimer = null
+    try {
+      writeFileSync(dbPath, JSON.stringify(db, null, 2), 'utf-8')
+    } catch (err) {
+      console.error('[store] échec de sauvegarde:', err)
+    }
+  }, 400)
+}
+
+/** Force l'écriture immédiate (à appeler avant de quitter l'application). */
+export function flushStore(): void {
+  if (dbPath) persistNow()
 }
 
 export function initStore(): void {
@@ -294,7 +319,28 @@ export function queryArticles(q: ArticleQuery): Article[] {
         (a.summary ?? '').toLowerCase().includes(needle)
     )
   }
-  return list.sort((a, b) => b.publishedAt - a.publishedAt).slice(0, 500)
+  list.sort((a, b) => b.publishedAt - a.publishedAt)
+
+  // Déduplication inter-sources : un même sujet (titre normalisé identique) couvert
+  // par plusieurs sources n'apparaît qu'une fois, avec un compteur de couverture.
+  const seen = new Map<string, Article>()
+  const out: Article[] = []
+  for (const a of list) {
+    const key = normalizeTitleKey(a.title)
+    if (!key) {
+      out.push(a)
+      continue
+    }
+    const kept = seen.get(key)
+    if (!kept) {
+      const copy = { ...a, dupCount: 1 }
+      seen.set(key, copy)
+      out.push(copy)
+    } else if (kept.sourceId !== a.sourceId) {
+      kept.dupCount = (kept.dupCount ?? 1) + 1
+    }
+  }
+  return out.slice(0, 500)
 }
 
 export function markRead(id: string, read: boolean): void {

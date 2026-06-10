@@ -1,6 +1,6 @@
 import { app, shell, BrowserWindow, Notification, Tray, Menu, nativeImage } from 'electron'
 import { join } from 'path'
-import { initStore, getSettings, saveSettings } from './store'
+import { initStore, getSettings, saveSettings, flushStore } from './store'
 import { registerIpc, refreshAllSources } from './ipc'
 
 let mainWindow: BrowserWindow | null = null
@@ -191,6 +191,8 @@ if (!gotLock) {
 
 app.on('before-quit', () => {
   isQuitting = true
+  // Écrit sur disque toute modification en attente (écritures différées)
+  flushStore()
 })
 
 app.on('window-all-closed', () => {

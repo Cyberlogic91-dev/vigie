@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { Article } from '../../../shared/types'
-import { toParagraphs, decodeEntities } from '../../../shared/text'
+import { toParagraphs, decodeEntities, readingTimeMin } from '../../../shared/text'
 
 interface Props {
   article: Article
@@ -109,6 +109,7 @@ export function ArticleDetail({ article, onChanged, onToast, onRead }: Props): J
         {article.author && <span>· par {article.author}</span>}
         <span>· {new Date(article.publishedAt).toLocaleString('fr-FR')}</span>
         <span>· 🏷️ {article.category}</span>
+        {article.content && <span>· ⏱️ {readingTimeMin(article.content)} min</span>}
       </div>
 
       <div className="detail-actions">
