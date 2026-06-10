@@ -61,6 +61,7 @@ export default function App(): JSX.Element {
   const [brief, setBrief] = useState<{ loading: boolean; text: string } | null>(null)
   const [savingSearch, setSavingSearch] = useState(false)
   const [searchName, setSearchName] = useState('')
+  const [updateVersion, setUpdateVersion] = useState<string | null>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -120,7 +121,13 @@ export default function App(): JSX.Element {
         setToast(msg)
       }
     })
-    return off
+    const offStatus = window.vigie.onUpdateStatus((msg) => setToast(msg))
+    const offReady = window.vigie.onUpdateReady((v) => setUpdateVersion(v))
+    return () => {
+      off()
+      offStatus()
+      offReady()
+    }
   }, [loadArticles, loadMeta])
 
   // Debounce de la recherche
@@ -601,6 +608,17 @@ export default function App(): JSX.Element {
 
       {/* ---------- Zone principale ---------- */}
       <main className="main">
+        {updateVersion && (
+          <div className="update-banner">
+            <span>✨ Vigie v{updateVersion} est prête à être installée.</span>
+            <button className="btn primary" onClick={() => void window.vigie.installUpdate()}>
+              Redémarrer pour installer
+            </button>
+            <button className="btn" onClick={() => setUpdateVersion(null)}>
+              Plus tard
+            </button>
+          </div>
+        )}
         <div className="toolbar">
           <input
             ref={searchRef}
