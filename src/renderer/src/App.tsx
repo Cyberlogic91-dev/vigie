@@ -20,6 +20,8 @@ import { ReadingMode } from './components/ReadingMode'
 import { BriefModal } from './components/BriefModal'
 import { OnboardingModal } from './components/OnboardingModal'
 import { Digest } from './components/Digest'
+import { RefreshGauge } from './components/RefreshGauge'
+import type { RefreshState } from '../../shared/types'
 
 /** Domaine d'un article/source pour le favicon. */
 function faviconUrl(u: string): string | null {
@@ -62,6 +64,7 @@ export default function App(): JSX.Element {
   const [savingSearch, setSavingSearch] = useState(false)
   const [searchName, setSearchName] = useState('')
   const [updateVersion, setUpdateVersion] = useState<string | null>(null)
+  const [refreshState, setRefreshState] = useState<RefreshState | null>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -123,10 +126,21 @@ export default function App(): JSX.Element {
     })
     const offStatus = window.vigie.onUpdateStatus((msg) => setToast(msg))
     const offReady = window.vigie.onUpdateReady((v) => setUpdateVersion(v))
+    let hideTimer: ReturnType<typeof setTimeout> | null = null
+    const offState = window.vigie.onRefreshState((st) => {
+      if (hideTimer) {
+        clearTimeout(hideTimer)
+        hideTimer = null
+      }
+      setRefreshState(st)
+      if (!st.active) hideTimer = setTimeout(() => setRefreshState(null), 1200)
+    })
     return () => {
       off()
       offStatus()
       offReady()
+      offState()
+      if (hideTimer) clearTimeout(hideTimer)
     }
   }, [loadArticles, loadMeta])
 
@@ -831,6 +845,8 @@ export default function App(): JSX.Element {
           }}
         />
       )}
+
+      {refreshState && <RefreshGauge state={refreshState} />}
 
       {toast && <div className="toast">{toast}</div>}
     </div>

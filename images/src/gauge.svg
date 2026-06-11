@@ -1,0 +1,53 @@
+<svg width="560" height="380" viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#0d1326"/><stop offset="1" stop-color="#070910"/>
+    </radialGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6e8bff"/><stop offset="1" stop-color="#9b6bff"/>
+    </linearGradient>
+    <linearGradient id="scan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141a2c"/><stop offset="1" stop-color="#0c0f1a"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6e8bff" stop-opacity="0.55"/><stop offset="1" stop-color="#6e8bff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="560" height="380" fill="url(#bg)"/>
+  <!-- carte -->
+  <rect x="80" y="40" width="400" height="300" rx="18" fill="url(#card)" stroke="#3a4a86"/>
+
+  <!-- radar -->
+  <g transform="translate(280,110)">
+    <circle r="46" fill="none" stroke="#3a4a86"/>
+    <circle r="28" fill="none" stroke="#2c3a6e"/>
+    <circle r="14" fill="none" stroke="#2c3a6e"/>
+    <path d="M0 0 L0 -46 A46 46 0 0 1 40 -23 Z" fill="url(#sweep)"/>
+    <line x1="0" y1="0" x2="0" y2="-46" stroke="#a8c4ff" stroke-width="2"/>
+    <circle r="5" fill="#6e8bff"/>
+  </g>
+
+  <!-- titre -->
+  <text x="280" y="185" font-size="16" font-weight="700" letter-spacing="2" fill="url(#acc)" text-anchor="middle">ANALYSE DES SOURCES</text>
+  <text x="280" y="207" font-size="12" fill="#98a1b3" text-anchor="middle">Numerama</text>
+
+  <!-- barre -->
+  <rect x="112" y="228" width="336" height="14" rx="7" fill="#ffffff10" stroke="#3a4a86"/>
+  <rect x="112" y="228" width="225" height="14" rx="7" fill="url(#acc)"/>
+  <rect x="270" y="228" width="60" height="14" rx="7" fill="url(#scan)"/>
+  <!-- ticks -->
+  <g stroke="#ffffff20" stroke-width="1">
+    <line x1="150" y1="228" x2="150" y2="242"/><line x1="188" y1="228" x2="188" y2="242"/>
+    <line x1="226" y1="228" x2="226" y2="242"/><line x1="264" y1="228" x2="264" y2="242"/>
+    <line x1="302" y1="228" x2="302" y2="242"/><line x1="340" y1="228" x2="340" y2="242"/>
+    <line x1="378" y1="228" x2="378" y2="242"/><line x1="416" y1="228" x2="416" y2="242"/>
+  </g>
+
+  <!-- meta -->
+  <text x="112" y="268" font-size="12" fill="#98a1b3">9 / 13 sources</text>
+  <text x="448" y="268" font-size="13" font-weight="700" fill="#6e8bff" text-anchor="end">67%</text>
+</svg>

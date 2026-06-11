@@ -54,6 +54,11 @@ const api: VigieAPI = {
       ipcRenderer.removeListener('articles:updated', updated)
     }
   },
+  onRefreshState: (cb) => {
+    const handler = (_e: unknown, state: unknown): void => cb(state as never)
+    ipcRenderer.on('refresh:state', handler)
+    return () => ipcRenderer.removeListener('refresh:state', handler)
+  },
   installUpdate: () => ipcRenderer.invoke('update:install'),
   onUpdateStatus: (cb) => {
     const handler = (_e: unknown, msg: string): void => cb(msg)

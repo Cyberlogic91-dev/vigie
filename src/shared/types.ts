@@ -126,6 +126,14 @@ export interface FetchResult {
   error?: string
 }
 
+/** Progression chiffrée de l'actualisation (pour la jauge) */
+export interface RefreshState {
+  active: boolean
+  done: number
+  total: number
+  label: string
+}
+
 export interface StatBucket {
   label: string
   count: number
@@ -240,6 +248,7 @@ export interface VigieAPI {
 
   // Événements (main -> renderer)
   onRefreshProgress: (cb: (msg: string) => void) => () => void
+  onRefreshState: (cb: (state: RefreshState) => void) => () => void
   onUpdateStatus: (cb: (msg: string) => void) => () => void
   onUpdateReady: (cb: (version: string) => void) => () => void
 }

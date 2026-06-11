@@ -36,12 +36,18 @@ async function refreshOneSource(source: Source): Promise<FetchResult> {
 /** Récupère toutes les sources actives, gère résumés auto et notifications. */
 export async function refreshAllSources(): Promise<FetchResult[]> {
   const sources = store.getSources().filter((s) => s.enabled)
+  const total = sources.length
   const results: FetchResult[] = []
-  for (const source of sources) {
+  broadcast('refresh:state', { active: true, done: 0, total, label: 'Initialisation…' })
+  for (let i = 0; i < sources.length; i++) {
+    const source = sources[i]
+    broadcast('refresh:state', { active: true, done: i, total, label: source.name })
     results.push(await refreshOneSource(source))
+    broadcast('refresh:state', { active: true, done: i + 1, total, label: source.name })
   }
 
   const totalAdded = results.reduce((n, r) => n + r.added, 0)
+  broadcast('refresh:state', { active: false, done: total, total, label: `${totalAdded} nouveau(x)` })
 
   const settings = store.getSettings()
   if (settings.notificationsEnabled && totalAdded > 0 && Notification.isSupported()) {
