@@ -7,9 +7,10 @@ interface Props {
   onChanged: () => Promise<void> | void
   onToast: (msg: string) => void
   onRead: () => void
+  onBack?: () => void
 }
 
-export function ArticleDetail({ article, onChanged, onToast, onRead }: Props): JSX.Element {
+export function ArticleDetail({ article, onChanged, onToast, onRead, onBack }: Props): JSX.Element {
   const [summarizing, setSummarizing] = useState(false)
   const [loadingText, setLoadingText] = useState(false)
   const [translating, setTranslating] = useState(false)
@@ -92,6 +93,11 @@ export function ArticleDetail({ article, onChanged, onToast, onRead }: Props): J
 
   return (
     <div className="detail">
+      {onBack && (
+        <button className="detail-back" onClick={onBack}>
+          ← Retour
+        </button>
+      )}
       <h1>{article.title}</h1>
       {article.image && (
         <img

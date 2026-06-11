@@ -65,6 +65,7 @@ export default function App(): JSX.Element {
   const [searchName, setSearchName] = useState('')
   const [updateVersion, setUpdateVersion] = useState<string | null>(null)
   const [refreshState, setRefreshState] = useState<RefreshState | null>(null)
+  const [navOpen, setNavOpen] = useState(false)
   const searchRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -500,9 +501,15 @@ export default function App(): JSX.Element {
   )
 
   return (
-    <div className="app">
+    <div className={`app ${navOpen ? 'nav-open' : ''}`}>
+      {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
       {/* ---------- Barre latérale ---------- */}
-      <aside className="sidebar">
+      <aside
+        className={`sidebar ${navOpen ? 'open' : ''}`}
+        onClick={(e) => {
+          if ((e.target as HTMLElement).closest('.nav-item, .saved-search-apply')) setNavOpen(false)
+        }}
+      >
         <div className="brand">
           <span className="brand-logo" aria-hidden="true" />
           Vigie
@@ -637,6 +644,9 @@ export default function App(): JSX.Element {
           </div>
         )}
         <div className="toolbar">
+          <button className="hamburger" onClick={() => setNavOpen((o) => !o)} title="Menu" aria-label="Menu">
+            ☰
+          </button>
           <input
             ref={searchRef}
             className="search"
@@ -797,6 +807,7 @@ export default function App(): JSX.Element {
                 onChanged={loadArticles}
                 onToast={setToast}
                 onRead={() => setReading(selected)}
+                onBack={() => setSelected(null)}
               />
             )}
           </div>
