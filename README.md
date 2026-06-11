@@ -13,7 +13,11 @@ Application bureau (Windows) de **veille technologique**. Agrège plusieurs sour
 
 <p align="center">
   <a href="https://github.com/Cyberlogic91-dev/vigie/releases/latest">
-    <img src="https://img.shields.io/badge/%E2%AC%87%20T%C3%A9l%C3%A9charger%20Vigie-Windows%2064--bit-6e8bff?style=for-the-badge&logo=windows&logoColor=white" alt="Télécharger Vigie" height="46">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20T%C3%A9l%C3%A9charger-Windows%2064--bit-6e8bff?style=for-the-badge&logo=windows&logoColor=white" alt="Télécharger Windows" height="46">
+  </a>
+  &nbsp;
+  <a href="https://github.com/Cyberlogic91-dev/vigie/releases/latest">
+    <img src="https://img.shields.io/badge/%E2%AC%87%20APK-Android%20(beta)-3ddc84?style=for-the-badge&logo=android&logoColor=white" alt="Télécharger Android APK" height="46">
   </a>
 </p>
 
