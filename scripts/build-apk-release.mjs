@@ -5,7 +5,8 @@ import { execSync } from 'child_process'
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync } from 'fs'
 import { join } from 'path'
 
-const run = (cmd, env = {}) => execSync(cmd, { stdio: 'inherit', shell: true, env: { ...process.env, ...env } })
+const run = (cmd, env = {}, cwd) =>
+  execSync(cmd, { stdio: 'inherit', shell: true, cwd, env: { ...process.env, ...env } })
 
 const propsPath = 'build/keystore.properties'
 if (!existsSync(propsPath)) {
@@ -33,8 +34,8 @@ console.log('• Synchronisation Capacitor…')
 run('npx cap sync android')
 
 console.log('• Compilation release (Gradle)…')
-const gw = process.platform === 'win32' ? 'gradlew.bat' : './gradlew'
-run(`cd android && ${gw} assembleRelease --no-daemon`, jdk17 ? { JAVA_HOME: jdk17 } : {})
+const gw = process.platform === 'win32' ? '.\\gradlew.bat' : './gradlew'
+run(`${gw} assembleRelease --no-daemon`, jdk17 ? { JAVA_HOME: jdk17 } : {}, 'android')
 
 const unsigned = 'android/app/build/outputs/apk/release/app-release-unsigned.apk'
 const aligned = 'android/app/build/outputs/apk/release/app-release-aligned.apk'

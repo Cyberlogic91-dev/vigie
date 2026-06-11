@@ -3,7 +3,8 @@
 import { execSync } from 'child_process'
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'fs'
 
-const run = (cmd, env = {}) => execSync(cmd, { stdio: 'inherit', shell: true, env: { ...process.env, ...env } })
+const run = (cmd, env = {}, cwd) =>
+  execSync(cmd, { stdio: 'inherit', shell: true, cwd, env: { ...process.env, ...env } })
 
 // Détecte un JDK 17 (Capacitor 6 ne compile pas avec un JDK trop récent)
 const jdk17 = ['C:/Program Files/Java/jdk-17', process.env.JAVA_HOME].find(
@@ -18,8 +19,8 @@ console.log('• Synchronisation Capacitor…')
 run('npx cap sync android')
 
 console.log('• Compilation de l’APK (Gradle)…')
-const gw = process.platform === 'win32' ? 'gradlew.bat' : './gradlew'
-run(`cd android && ${gw} assembleDebug --no-daemon`, jdk17 ? { JAVA_HOME: jdk17 } : {})
+const gw = process.platform === 'win32' ? '.\\gradlew.bat' : './gradlew'
+run(`${gw} assembleDebug --no-daemon`, jdk17 ? { JAVA_HOME: jdk17 } : {}, 'android')
 
 const src = 'android/app/build/outputs/apk/debug/app-debug.apk'
 const version = JSON.parse(readFileSync('package.json', 'utf-8')).version
