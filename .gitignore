@@ -3,5 +3,8 @@ out/
 release/
 dist/
 build/wix3/
+# Android / Capacitor (générés)
+android/
+mobile/www/
 *.log
 .DS_Store
