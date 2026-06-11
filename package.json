@@ -1,6 +1,6 @@
 {
   "name": "vigie",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Vigie — application de veille technologique",
   "homepage": "https://www.cyberlogic.fr",
   "main": "./out/main/index.js",
