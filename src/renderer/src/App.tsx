@@ -416,6 +416,8 @@ export default function App(): JSX.Element {
   }, [query])
 
   const unreadCount = articles.filter((a) => !a.read).length
+  // Types de source réellement présents dans les sources de l'utilisateur
+  const presentTypes = useMemo(() => new Set(sources.map((s) => s.type)), [sources])
 
   const layout = settings?.cardLayout ?? 'magazine'
 
@@ -532,7 +534,7 @@ export default function App(): JSX.Element {
             }}
           >
             <span>📰 Tout</span>
-            <span className="count">{articles.length}</span>
+            <span className="count">{counts?.allTotal ?? articles.length}</span>
           </button>
           <button
             className={`nav-item ${view === 'feed' && activeKey === 'unread' ? 'active' : ''}`}
@@ -552,6 +554,7 @@ export default function App(): JSX.Element {
             }}
           >
             <span>★ Favoris</span>
+            {counts && counts.starred > 0 && <span className="count">{counts.starred}</span>}
           </button>
         </div>
 
@@ -573,7 +576,7 @@ export default function App(): JSX.Element {
 
         <div className="nav-section">
           <h4>Types de source</h4>
-          {SOURCE_TYPES.map(({ type, label }) => (
+          {SOURCE_TYPES.filter(({ type }) => presentTypes.has(type)).map(({ type, label }) => (
             <button
               key={type}
               className={`nav-item ${view === 'feed' && activeKey === `type:${type}` ? 'active' : ''}`}

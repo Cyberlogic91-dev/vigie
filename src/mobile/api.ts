@@ -393,13 +393,15 @@ export const mobileApi: VigieAPI = {
     const byType: Record<string, number> = {}
     const byCategory: Record<string, number> = {}
     let total = 0
+    let starred = 0
     for (const a of db.articles) {
+      if (a.starred) starred++
       if (a.read) continue
       total++
       byType[a.sourceType] = (byType[a.sourceType] ?? 0) + 1
       byCategory[a.category] = (byCategory[a.category] ?? 0) + 1
     }
-    return { total, byType, byCategory }
+    return { total, allTotal: db.articles.length, starred, byType, byCategory }
   },
 
   refreshAll: async () => {

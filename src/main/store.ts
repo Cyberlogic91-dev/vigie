@@ -1,7 +1,7 @@
 import { app } from 'electron'
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
-import type { Article, Source, AppSettings, ArticleQuery, Stats, RecommendedSource, FeedLanguage } from '../shared/types'
+import type { Article, Source, AppSettings, ArticleQuery, Stats, RecommendedSource, FeedLanguage, UnreadCounts } from '../shared/types'
 import { DEFAULT_SETTINGS } from '../shared/types'
 import { normalizeTitleKey } from '../shared/text'
 import { RECOMMENDED_SOURCES } from '../shared/catalog'
@@ -375,17 +375,19 @@ export function getStats(): Stats {
   }
 }
 
-export function getUnreadCounts(): { total: number; byType: Record<string, number>; byCategory: Record<string, number> } {
+export function getUnreadCounts(): UnreadCounts {
   const byType: Record<string, number> = {}
   const byCategory: Record<string, number> = {}
   let total = 0
+  let starred = 0
   for (const a of db.articles) {
+    if (a.starred) starred++
     if (a.read) continue
     total++
     byType[a.sourceType] = (byType[a.sourceType] ?? 0) + 1
     byCategory[a.category] = (byCategory[a.category] ?? 0) + 1
   }
-  return { total, byType, byCategory }
+  return { total, allTotal: db.articles.length, starred, byType, byCategory }
 }
 
 /** Enregistre l'état de santé d'une source après une récupération. */

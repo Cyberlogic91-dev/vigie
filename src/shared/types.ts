@@ -193,10 +193,17 @@ export interface RecommendedSource {
   lang: Lang
 }
 
-/** Compteurs d'articles non lus (barre latérale) */
+/** Compteurs d'articles (barre latérale) */
 export interface UnreadCounts {
+  /** Nombre total d'articles non lus */
   total: number
+  /** Nombre total d'articles (lus + non lus) */
+  allTotal: number
+  /** Nombre d'articles en favori */
+  starred: number
+  /** Non lus par type de source */
   byType: Record<string, number>
+  /** Non lus par catégorie */
   byCategory: Record<string, number>
 }
 
