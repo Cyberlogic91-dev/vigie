@@ -6,5 +6,9 @@ build/wix3/
 # Android / Capacitor (générés)
 android/
 mobile/www/
+# Keystores (secrets — ne jamais committer)
+*.jks
+*.keystore
+build/keystore.properties
 *.log
 .DS_Store

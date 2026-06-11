@@ -80,13 +80,20 @@ npm run build      # compile main + preload + renderer dans out/
 npm run package    # génère l'app non empaquetée (release/win-unpacked)
 npm run dist       # installeur NSIS → release/Vigie-Setup-<version>.exe
 npm run dist:msi   # (optionnel) MSI via electron-wix-msi (WiX 3.14, voir ci-dessous)
-npm run apk        # (Android) APK via Capacitor → release/Vigie-<version>-android.apk
+npm run apk         # (Android) APK debug → release/Vigie-<version>-android.apk
+npm run apk:release # (Android) APK signé pour distribution (keystore requise)
 ```
 
 > **Version Android (beta)** : `npm run apk` empaquette l'interface React dans une WebView Capacitor avec un
 > backend mobile (stockage Preferences, récupération RSS via HTTP natif). Nécessite l'**Android SDK** et un **JDK 17**.
 > Fonctionnel : sources, flux, lecture, résumés IA locaux, recherche, réglages. Non disponible sur mobile :
 > Ollama (traduction), import/export de fichiers, mise à jour in-app.
+>
+> **APK signé** (`npm run apk:release`) : nécessite une keystore. Générez-la une fois puis renseignez
+> `build/keystore.properties` (gitignoré) :
+> ```bash
+> keytool -genkeypair -v -keystore build/vigie-release.jks -alias vigie -keyalg RSA -keysize 2048 -validity 10000
+> ```
 
 ```bash
 ```
