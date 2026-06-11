@@ -178,7 +178,7 @@ if (!gotLock) {
     createWindow()
     createTray()
     handleVersionChange()
-    initAutoUpdate(() => mainWindow)
+    initAutoUpdate(() => mainWindow, () => { isQuitting = true })
     scheduleRefresh()
     scheduleDigest()
 

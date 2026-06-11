@@ -19,12 +19,21 @@ export interface UpdateCheckResult {
  * - Silencieux en développement, hors-ligne, ou si aucune Release n'est publiée.
  * - Expose aussi un check manuel (`update:check`) déclenchable depuis les Réglages.
  */
-export function initAutoUpdate(getWindow: () => BrowserWindow | null): void {
+export function initAutoUpdate(
+  getWindow: () => BrowserWindow | null,
+  setQuitting: () => void = () => undefined
+): void {
   // La version courante et le check manuel restent disponibles même en dev
   ipcMain.handle('app:version', () => app.getVersion())
 
   ipcMain.handle('update:install', () => {
-    if (updateReady) autoUpdater.quitAndInstall()
+    if (!updateReady) return
+    // Indique à l'app qu'on quitte vraiment pour que le gestionnaire close/tray
+    // ne bloque pas la fermeture (preventDefault quand closeToTray est actif)
+    setQuitting()
+    // isSilent=false : affiche la progression de l'installeur NSIS
+    // isForceRunAfter=true : relance l'app automatiquement après installation
+    autoUpdater.quitAndInstall(false, true)
   })
 
   ipcMain.handle('update:check', async (): Promise<UpdateCheckResult> => {
