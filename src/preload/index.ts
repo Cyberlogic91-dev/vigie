@@ -60,6 +60,8 @@ const api: VigieAPI = {
     return () => ipcRenderer.removeListener('refresh:state', handler)
   },
   installUpdate: () => ipcRenderer.invoke('update:install'),
+  checkForUpdates: () => ipcRenderer.invoke('update:check'),
+  getAppVersion: () => ipcRenderer.invoke('app:version'),
   onUpdateStatus: (cb) => {
     const handler = (_e: unknown, msg: string): void => cb(msg)
     ipcRenderer.on('update:status', handler)

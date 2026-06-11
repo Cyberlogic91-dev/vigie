@@ -134,6 +134,13 @@ export interface RefreshState {
   label: string
 }
 
+export interface UpdateCheckResult {
+  state: 'available' | 'downloading' | 'uptodate' | 'dev' | 'error'
+  current: string
+  version?: string
+  message?: string
+}
+
 export interface StatBucket {
   label: string
   count: number
@@ -252,6 +259,8 @@ export interface VigieAPI {
 
   // Mise à jour automatique
   installUpdate: () => Promise<void>
+  checkForUpdates: () => Promise<UpdateCheckResult>
+  getAppVersion: () => Promise<string>
 
   // Événements (main -> renderer)
   onRefreshProgress: (cb: (msg: string) => void) => () => void

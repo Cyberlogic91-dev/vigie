@@ -515,6 +515,9 @@ export const mobileApi: VigieAPI = {
   installUpdate: async () => {
     /* pas de mise à jour in-app sur mobile (passer par le Store / APK) */
   },
+  // Sur mobile, la mise à jour passe par la réinstallation de l'APK
+  checkForUpdates: async () => ({ state: 'dev' as const, current: '' }),
+  getAppVersion: async () => '',
 
   onRefreshProgress: (cb) => {
     progressCbs.add(cb)

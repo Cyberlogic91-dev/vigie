@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { AppSettings } from '../../../shared/types'
 import { LANGS } from '../../../shared/types'
 
@@ -12,9 +12,35 @@ interface Props {
 
 export function SettingsModal({ initial, onClose, onSaved, onToast, onDataChanged }: Props): JSX.Element {
   const [s, setS] = useState<AppSettings>(initial)
+  const [version, setVersion] = useState('')
+  const [checking, setChecking] = useState(false)
+  const [updateMsg, setUpdateMsg] = useState('')
 
   const set = <K extends keyof AppSettings>(key: K, value: AppSettings[K]): void =>
     setS((prev) => ({ ...prev, [key]: value }))
+
+  useEffect(() => {
+    window.vigie.getAppVersion?.().then(setVersion).catch(() => undefined)
+  }, [])
+
+  const checkUpdate = async (): Promise<void> => {
+    if (!window.vigie.checkForUpdates) return
+    setChecking(true)
+    setUpdateMsg('')
+    try {
+      const r = await window.vigie.checkForUpdates()
+      if (r.state === 'downloading')
+        setUpdateMsg(`✨ Mise à jour v${r.version} trouvée — téléchargement en cours…`)
+      else if (r.state === 'uptodate') setUpdateMsg('✓ Vigie est à jour.')
+      else if (r.state === 'available') setUpdateMsg('✨ Une mise à jour est prête à être installée.')
+      else if (r.state === 'dev') setUpdateMsg('Mise à jour indisponible en mode développement.')
+      else setUpdateMsg(`Vérification impossible : ${r.message ?? 'erreur réseau'}`)
+    } catch (e) {
+      setUpdateMsg('Vérification impossible : ' + (e instanceof Error ? e.message : String(e)))
+    } finally {
+      setChecking(false)
+    }
+  }
 
   const save = async (): Promise<void> => {
     const saved = await window.vigie.saveSettings(s)
@@ -252,6 +278,19 @@ export function SettingsModal({ initial, onClose, onSaved, onToast, onDataChange
             </button>
           </div>
           <div className="hint">Exporte/restaure sources, articles et réglages dans un fichier JSON.</div>
+        </div>
+
+        <div className="field">
+          <label>Mises à jour</label>
+          <div className="row" style={{ alignItems: 'center' }}>
+            <button className="btn" onClick={checkUpdate} disabled={checking}>
+              {checking ? <span className="spinner" /> : '🔄'} Vérifier maintenant
+            </button>
+            {version && <span className="hint" style={{ margin: 0 }}>Version actuelle : v{version}</span>}
+          </div>
+          <div className="hint">
+            {updateMsg || 'Vigie se met à jour automatiquement depuis GitHub (vérification toutes les 6 h).'}
+          </div>
         </div>
 
         <div className="modal-actions">
